@@ -36,6 +36,11 @@ dispatch_queue_t fsQueue;
     return commonTaskQueue;
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 + (RCTBridge *)getRCTBridge
 {
     RCTRootView * rootView = (RCTRootView*) [[UIApplication sharedApplication] keyWindow].rootViewController.view;
@@ -479,7 +484,7 @@ RCT_EXPORT_METHOD(readFile:(NSString *)path
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-    
+
     [RNFetchBlobFS readFile:path encoding:encoding onComplete:^(NSData * content, NSString * code, NSString * err) {
         if(err != nil) {
             reject(code, err, nil);
