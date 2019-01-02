@@ -47,9 +47,6 @@ dispatch_queue_t fsQueue;
     return rootView.bridge;
 }
 
-+ (BOOL)requiresMainQueueSetup {
-    return NO;
-}
 
 RCT_EXPORT_MODULE();
 
